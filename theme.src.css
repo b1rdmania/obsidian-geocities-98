@@ -172,6 +172,28 @@ body { font-family: var(--geo-face); }
 }
 .markdown-preview-view h1, .cm-header-1 { text-transform: uppercase; }
 
+/* H1: BLINKING like it's 1998, with flames on either side */
+@keyframes geo-blink { 0%,60% { opacity: 1 } 61%,100% { opacity: .45 } }
+.markdown-preview-view h1 {
+  animation: geo-blink 1.3s steps(1) infinite;
+  display: flex; align-items: center; gap: 12px;
+}
+.markdown-preview-view h1::before,
+.markdown-preview-view h1::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 34px; height: 44px;
+  background: url("__BIGFIRE__") no-repeat center / contain;
+  mix-blend-mode: screen;   /* knock out the black GIF background */
+}
+
+/* H2: animated rainbow rule underneath */
+.markdown-preview-view h2 {
+  border-bottom: none !important;
+  padding-bottom: 10px;
+  background: url("__RAINBOW__") repeat-x left bottom / auto 6px;
+}
+
 /* ---- Links: underlined + a little glow ---------------------------------- */
 .markdown-preview-view a, .cm-hmd-internal-link, .cm-link, a.tag, .external-link {
   text-decoration: underline !important;
@@ -254,7 +276,7 @@ button:not(.clickable-icon) {
 }
 button:not(.clickable-icon):active { border-style: inset !important; }
 
-/* ---- Active tab: gets a "NEW!" flag ------------------------------------- */
+/* ---- Active tab: gets a blinking "NEW!" GIF badge ----------------------- */
 .workspace-tab-header.is-active {
   position: relative;
   border-bottom: 3px solid var(--interactive-accent);
@@ -263,15 +285,19 @@ button:not(.clickable-icon):active { border-style: inset !important; }
   font-weight: 700;
   color: var(--text-accent) !important;
 }
-
-/* ---- Vault name in sidebar → spinning globe ----------------------------- */
-.workspace-drawer-vault-name, .nav-header::before {
+.workspace-tab-header.is-active::after {
   content: "";
+  position: absolute; top: -2px; right: -10px;
+  width: 34px; height: 18px;
+  background: url("__NEWBADGE__") no-repeat center / contain;
+  pointer-events: none; z-index: 5;
 }
+
+/* ---- Vault name in sidebar → BIG spinning globe (the fan favourite) ------ */
 .nav-files-container::before {
   content: "";
   display: block;
-  height: 36px; margin: 6px auto;
+  height: 56px; margin: 8px auto 4px;
   background: url("__GLOBE__") no-repeat center / contain;
 }
 
@@ -308,5 +334,40 @@ button:not(.clickable-icon):active { border-style: inset !important; }
 /* ---- Ribbon (left icon bar): star bullets ------------------------------- */
 .side-dock-ribbon-action:hover { background: var(--interactive-accent) !important; }
 
-/* ---- Bullet points: sparkle star ---------------------------------------- */
-.markdown-rendered ul > li::marker { content: "\2726 "; color: var(--interactive-accent); }
+/* ---- Bullet points: real animated sparkle GIF --------------------------- */
+.markdown-preview-view ul { list-style: none; }
+.markdown-preview-view ul > li {
+  list-style: none;
+  position: relative;
+}
+.markdown-preview-view ul > li::before {
+  content: "";
+  position: absolute; left: -1.4em; top: .15em;
+  width: 16px; height: 16px;
+  background: url("__STAR__") no-repeat center / contain;
+}
+
+/* ---- Empty tab / new pane: a big WELCOME banner ------------------------- */
+.empty-state-container::before,
+.empty-state::before {
+  content: "";
+  display: block;
+  width: 260px; max-width: 80%; height: 70px;
+  margin: 0 auto 18px;
+  background: url("__WELCOME__") no-repeat center / contain;
+}
+
+/* ======================================================================== */
+/*  THE DANCING BABY. Non-negotiable. Floats in the corner, forever.        */
+/*  mix-blend-mode: screen knocks out its black background on any bg.        */
+/* ======================================================================== */
+.workspace::after {
+  content: "";
+  position: fixed;
+  right: 10px; bottom: 34px;
+  width: 56px; height: 74px;
+  background: url("__BABY__") no-repeat center / contain;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 9999;
+}

@@ -17,6 +17,10 @@ VARS = {
  "CONSTRUCTION": d("construction.gif"),
  "NEWBADGE":  d("newbadge.gif"),
  "COUNTER":   d("counter.gif"),
+ "BABY":      d("babydance.gif"),
+ "RAINBOW":   d("rainbowline.gif"),
+ "WELCOME":   d("welcomebanner.gif"),
+ "BIGFIRE":   d("bigfire.gif"),
 }
 css = (ROOT / "theme.src.css").read_text()
 for k,v in VARS.items():

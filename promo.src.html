@@ -1,0 +1,95 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1600px; height:900px; overflow:hidden;
+    font-family:"Comic Sans MS","Comic Neue",cursive; }
+  .stage {
+    position:relative; width:1600px; height:900px;
+    background:
+      radial-gradient(120% 90% at 50% 0%, #2a005a 0%, #0a0030 45%, #000018 100%),
+      url("__STARTILE__");
+    background-size: cover, 128px 128px;
+    overflow:hidden;
+  }
+  /* scanline / crt vibe */
+  .stage::after{ content:""; position:absolute; inset:0; pointer-events:none;
+    background:repeating-linear-gradient(0deg,rgba(0,0,0,.10) 0 2px,transparent 2px 4px);
+    mix-blend-mode:multiply; }
+
+  /* angled screenshot of the real theme */
+  .shot{ position:absolute; right:-40px; bottom:-30px; width:820px;
+    transform:rotate(-6deg); transform-origin:bottom right;
+    border:8px ridge #ff00ff; box-shadow:0 0 40px #00ffff, 0 20px 60px rgba(0,0,0,.6);
+    filter:saturate(1.05); }
+  .shot img{ display:block; width:100%; }
+
+  /* dark scrim on left so wordmark pops */
+  .scrim{ position:absolute; inset:0;
+    background:linear-gradient(90deg, rgba(0,0,20,.85) 0%, rgba(0,0,20,.55) 40%, transparent 70%); }
+
+  .hero{ position:absolute; left:70px; top:150px; z-index:3; width:900px; }
+
+  .kicker{ color:#00ffff; font-size:26px; letter-spacing:6px; text-transform:uppercase;
+    text-shadow:0 0 8px #00ffff,2px 2px 0 #ff00ff; margin-bottom:6px; }
+
+  /* WordArt-style chrome wordmark */
+  .word{
+    font-weight:700; line-height:.92; text-transform:uppercase;
+    font-size:150px; letter-spacing:-2px;
+    background:linear-gradient(#ffffff 0%, #ffe600 22%, #ff7b00 40%, #ff00c8 60%, #7a00ff 80%, #00e0ff 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    -webkit-text-stroke:3px #10002a;
+    filter:drop-shadow(4px 4px 0 #000) drop-shadow(0 0 22px rgba(255,0,255,.55));
+    transform:skewX(-6deg);
+  }
+  .word .yr{ font-size:150px; }
+  .forob{ margin-top:8px; font-size:60px; font-weight:700; transform:skewX(-6deg);
+    color:#fff; -webkit-text-stroke:2px #ff00ff;
+    text-shadow:3px 3px 0 #ff00ff, 0 0 18px #00ffff; }
+  .forob b{ color:#ffe600; }
+
+  .tag{ margin-top:26px; font-size:30px; color:#eafcff; max-width:720px;
+    text-shadow:1px 1px 0 #000, 0 0 8px #ff00ff; }
+  .chips{ margin-top:20px; display:flex; gap:12px; }
+  .chip{ font-size:22px; font-weight:700; padding:6px 16px; border-radius:0;
+    border:3px outset #ffff00; background:#ff00ff; color:#ffff00;
+    text-shadow:none; box-shadow:2px 2px 0 #000; }
+  .chip.b{ background:#00ffff; color:#10002a; border-color:#ffffff; }
+
+  /* GIF furniture */
+  .globe{ position:absolute; left:150px; top:60px; width:120px; z-index:4;
+    filter:drop-shadow(0 0 14px #00ffff); }
+  .baby{ position:absolute; left:600px; bottom:20px; width:150px; z-index:7;
+    mix-blend-mode:screen; }
+  .fireL{ position:absolute; left:18px; top:300px; width:80px; z-index:4; mix-blend-mode:screen; }
+  .new{ position:absolute; left:640px; top:120px; width:120px; z-index:6; transform:rotate(8deg); }
+  .visitor{ position:absolute; right:40px; top:36px; z-index:6; text-align:center;
+    color:#00ff66; font-size:22px; text-shadow:0 0 6px #00ff66; }
+  .visitor .num{ font-family:"Courier New",monospace; background:#000; color:#00ff66;
+    border:2px inset #00ff66; padding:2px 10px; letter-spacing:6px; display:inline-block; margin-top:4px; }
+</style></head>
+<body>
+<div class="stage">
+  <div class="shot"><img src="__SHOT__" alt="theme screenshot"></div>
+  <div class="scrim"></div>
+
+  <img class="globe" src="__GLOBE__">
+  <img class="new" src="__NEW__">
+  <img class="fireL" src="__FIRE__">
+
+  <div class="hero">
+    <div class="kicker">★ An Obsidian Theme ★</div>
+    <div class="word">GeoCities<br><span class="yr">'98</span></div>
+    <div class="forob">FOR <b>OBSIDIAN</b></div>
+    <div class="tag">Table-layout soul for a Markdown app. Tiled starfields, Comic&nbsp;Sans, animated GIF dividers &amp; a dancing baby.</div>
+    <div class="chips">
+      <span class="chip">🌌 DARK</span>
+      <span class="chip b">🌞 LIGHT</span>
+      <span class="chip">🔥 UNHINGED</span>
+    </div>
+  </div>
+
+  <img class="baby" src="__BABY__">
+
+  <div class="visitor">You are visitor<br><span class="num">000001</span></div>
+</div>
+</body></html>

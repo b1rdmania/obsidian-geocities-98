@@ -19,7 +19,7 @@ GeoCities '98 drags Obsidian back through a 56k modem to the golden age of the
 personal homepage. Light **and** dark. Best viewed in Netscape Navigator at
 800×600.
 
-![GeoCities 98 theme screenshot](screenshot.png)
+![GeoCities '98 for Obsidian](promo.png)
 
 ---
 
