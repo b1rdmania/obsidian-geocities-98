@@ -1,0 +1,57 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="theme.css">
+<style>
+  html,body{margin:0} .app-container{display:flex;height:820px;font-size:15px}
+  .side-dock-ribbon{width:44px;background:var(--geo-panel-bg);border-right:2px ridge var(--interactive-accent)}
+  .side-dock-ribbon-action{height:36px;margin:4px;border:1px solid var(--interactive-accent)}
+  .workspace-split.mod-left-split{width:220px;padding:6px}
+  .nav-files-container{height:100%;color:var(--text-normal)}
+  .nav-file{padding:3px 8px}
+  .main{flex:1;display:flex;flex-direction:column;min-width:0}
+  .workspace-tab-header-container{display:flex;gap:2px;padding:4px 6px}
+  .workspace-tab-header{padding:4px 14px;color:var(--text-muted);background:var(--geo-panel-bg)}
+  .markdown-preview-view{flex:1;overflow:auto;padding:24px 40px;color:var(--text-normal);line-height:1.6}
+  .status-bar{display:flex;align-items:center;padding:2px 8px;color:var(--text-muted);font-size:12px}
+  table{border-collapse:collapse}
+  th,td{padding:4px 10px}
+  pre{padding:10px}
+</style></head>
+<body class="__MODE__">
+<div class="app-container">
+  <div class="side-dock-ribbon">
+    <div class="side-dock-ribbon-action"></div><div class="side-dock-ribbon-action"></div>
+  </div>
+  <div class="workspace-split mod-left-split">
+    <div class="nav-files-container">
+      <div class="nav-file">welcome.md</div>
+      <div class="nav-file">webring.md</div>
+      <div class="nav-file">guestbook.md</div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="workspace-tab-header-container">
+      <div class="workspace-tab-header is-active"><span class="workspace-tab-header-inner-title">welcome.md</span></div>
+      <div class="workspace-tab-header"><span class="workspace-tab-header-inner-title">webring.md</span></div>
+    </div>
+    <div class="markdown-preview-view markdown-rendered">
+      <h1>Welcome To My Vault!!!</h1>
+      <p>You are visitor number <b>000001</b>. This page is best viewed in Netscape Navigator at 800&times;600. Sign my <a href="#">guestbook</a>!</p>
+      <hr>
+      <h2>What is this place</h2>
+      <p>A note-taking vault with <a href="#">internal links</a>, <code>inline code</code>, and #tags like <a class="tag">#underconstruction</a> <a class="tag">#coolsites</a>.</p>
+      <blockquote>This blockquote is permanently under construction. Please check back never.</blockquote>
+      <h3>My Favourite Things</h3>
+      <ul><li>Animated GIF dividers</li><li>Comic Sans MS</li><li>Starfield tiled backgrounds</li></ul>
+      <pre><code>console.log("hello, 1998");</code></pre>
+      <h2>Webring Members</h2>
+      <table>
+        <thead><tr><th>Site</th><th>Rating</th></tr></thead>
+        <tbody><tr><td>Daves World</td><td>5 stars</td></tr><tr><td>Cat HQ</td><td>4 stars</td></tr></tbody>
+      </table>
+      <hr>
+      <p>Thanks for visiting. Dont forget to bookmark!</p>
+    </div>
+    <div class="status-bar"><span>42 words</span></div>
+  </div>
+</div>
+</body></html>

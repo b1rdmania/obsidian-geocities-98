@@ -1,0 +1,312 @@
+/* ============================================================================
+   GEOCITIES '98  —  an Obsidian theme
+   Table-layout soul for a Markdown app. Comic Sans, starfields, marquees,
+   animated GIF dividers, hit counters. Under construction since 1997.
+   Light + dark. All assets inlined (data URIs) so nothing hotlinks.
+   ---------------------------------------------------------------------------
+   GIFs sourced from the Internet Archive's gifcities.org collection.
+   ============================================================================ */
+
+/* ---- Fonts: the one true webface ---------------------------------------- */
+:root {
+  --geo-face: "Comic Sans MS", "Comic Neue", "Chalkboard SE", cursive;
+  --geo-mono: "Courier New", "Courier", monospace;
+}
+body {
+  --font-text-theme: var(--geo-face);
+  --font-interface-theme: var(--geo-face);
+  --font-monospace-theme: var(--geo-mono);
+  --font-text-override: var(--geo-face);
+  --font-interface-override: var(--geo-face);
+  --font-monospace-override: var(--geo-mono);
+}
+
+/* =====================  DARK  =====================  midnight starfield  ==== */
+.theme-dark {
+  --background-primary:        #000022;
+  --background-primary-alt:    #000033;
+  --background-secondary:      #00003a;
+  --background-secondary-alt:  #10004a;
+  --background-modifier-border:        #ff00ff;
+  --background-modifier-border-hover:  #ffff00;
+  --background-modifier-border-focus:  #00ffff;
+  --background-modifier-hover:  #24005a;
+  --background-modifier-active: #3a0080;
+
+  --text-normal:   #eafcff;
+  --text-muted:    #66ccff;
+  --text-faint:    #4c86a8;
+  --text-on-accent:#000000;
+  --text-accent:       #ffff33;
+  --text-accent-hover: #ff00ff;
+  --text-error:    #ff3366;
+  --text-success:  #00ff66;
+  --text-selection: #ff00ff55;
+  --text-highlight-bg: #ffff00;
+
+  --interactive-accent:        #ff00ff;
+  --interactive-accent-hover:  #ffff00;
+  --interactive-normal:        #10004a;
+  --interactive-hover:         #3a0080;
+
+  --link-color:        #00ffff;
+  --link-color-hover:  #ff00ff;
+  --link-unresolved-color: #ff6600;
+
+  --h1-color: #ffff33;
+  --h2-color: #00ffff;
+  --h3-color: #ff66ff;
+  --h4-color: #66ff66;
+  --h5-color: #ff9933;
+  --h6-color: #ff6699;
+
+  --tag-color: #ffff00;
+  --tag-background: #ff00ff;
+  --tag-color-hover: #000000;
+  --tag-background-hover: #ffff00;
+
+  --code-normal: #00ff66;
+  --code-background: #001a3a;
+
+  --titlebar-background: #10004a;
+  --titlebar-background-focused: #10004a;
+  --titlebar-text-color: #ffff33;
+
+  --scrollbar-thumb-bg: #ff00ff;
+  --scrollbar-active-thumb-bg: #ffff00;
+
+  --geo-page-bg: #000022 url("__STARFIELD__");
+  --geo-panel-bg: #00003a;
+  --geo-glow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
+  --geo-heading-glow: 2px 2px 0 #ff00ff, 0 0 10px #00ffff;
+}
+
+/* =====================  LIGHT  ===================  garish daylight  ======== */
+.theme-light {
+  --background-primary:        #ffffcc;
+  --background-primary-alt:    #ffffaa;
+  --background-secondary:      #ccffff;
+  --background-secondary-alt:  #ccffcc;
+  --background-modifier-border:        #ff0066;
+  --background-modifier-border-hover:  #0000ff;
+  --background-modifier-border-focus:  #ff0000;
+  --background-modifier-hover:  #ffff99;
+  --background-modifier-active: #ffcc00;
+
+  --text-normal:   #000066;
+  --text-muted:    #cc0066;
+  --text-faint:    #996699;
+  --text-on-accent:#ffffff;
+  --text-accent:       #ff0066;
+  --text-accent-hover: #0000ff;
+  --text-error:    #cc0000;
+  --text-success:  #008800;
+  --text-selection: #00ffff88;
+  --text-highlight-bg: #ffff00;
+
+  --interactive-accent:        #ff0066;
+  --interactive-accent-hover:  #0000ff;
+  --interactive-normal:        #ccffff;
+  --interactive-hover:         #ffff99;
+
+  --link-color:        #0000ff;
+  --link-color-hover:  #ff00ff;
+  --link-unresolved-color: #cc0000;
+
+  --h1-color: #ff0000;
+  --h2-color: #009900;
+  --h3-color: #6600cc;
+  --h4-color: #cc6600;
+  --h5-color: #0066cc;
+  --h6-color: #cc0099;
+
+  --tag-color: #ff0000;
+  --tag-background: #ffff00;
+  --tag-color-hover: #ffffff;
+  --tag-background-hover: #ff0000;
+
+  --code-normal: #cc0066;
+  --code-background: #ffffff;
+
+  --titlebar-background: #ccffff;
+  --titlebar-background-focused: #ccffff;
+  --titlebar-text-color: #ff0066;
+
+  --scrollbar-thumb-bg: #ff0066;
+  --scrollbar-active-thumb-bg: #0000ff;
+
+  --geo-page-bg: #ffffcc url("__CONFETTI__");
+  --geo-panel-bg: #ccffff;
+  --geo-glow: none;
+  --geo-heading-glow: 1px 1px 0 #ffffff, 2px 2px 0 rgba(0,0,0,.25);
+}
+
+/* ---- Global chrome ------------------------------------------------------- */
+body { font-family: var(--geo-face); }
+
+.markdown-source-view,
+.markdown-preview-view,
+.workspace-leaf-content[data-type="markdown"] .cm-editor,
+.workspace-leaf-content[data-type="markdown"] {
+  background: var(--geo-page-bg) !important;
+  background-attachment: fixed !important;
+}
+.workspace-tabs .workspace-leaf { background: transparent; }
+
+/* Sidebars & panels get the flat panel colour, no starfield (keeps lists legible) */
+.workspace-split.mod-left-split,
+.workspace-split.mod-right-split,
+.nav-files-container,
+.workspace-tab-header-container {
+  background: var(--geo-panel-bg) !important;
+}
+
+/* ---- Headings: glowing Comic Sans --------------------------------------- */
+.markdown-preview-view h1, .markdown-preview-view h2, .markdown-preview-view h3,
+.markdown-preview-view h4, .markdown-preview-view h5, .markdown-preview-view h6,
+.cm-header, .HyperMD-header {
+  font-family: var(--geo-face) !important;
+  font-weight: 700 !important;
+  text-shadow: var(--geo-heading-glow);
+  letter-spacing: .5px;
+}
+.markdown-preview-view h1, .cm-header-1 { text-transform: uppercase; }
+
+/* ---- Links: underlined + a little glow ---------------------------------- */
+.markdown-preview-view a, .cm-hmd-internal-link, .cm-link, a.tag, .external-link {
+  text-decoration: underline !important;
+  text-shadow: var(--geo-glow);
+}
+.markdown-preview-view a:hover { text-decoration: underline wavy !important; }
+
+/* ---- Horizontal rule → animated GIF divider ----------------------------- */
+.markdown-preview-view hr,
+.markdown-source-view .cm-hr {
+  border: none !important;
+  height: 24px !important;
+  background: url("__DIVIDER__") repeat-x center / auto 100% !important;
+  box-shadow: none !important;
+}
+
+/* ---- Blockquotes → "under construction" box ----------------------------- */
+.markdown-preview-view blockquote,
+.markdown-source-view .cm-quote {
+  border: 3px ridge var(--interactive-accent) !important;
+  border-left-width: 3px !important;
+  background: var(--geo-panel-bg) !important;
+  border-radius: 0 !important;
+  position: relative;
+  padding: 10px 14px 10px 46px !important;
+}
+.markdown-preview-view blockquote::before {
+  content: "";
+  position: absolute; left: 6px; top: 50%; transform: translateY(-50%);
+  width: 32px; height: 32px;
+  background: url("__CONSTRUCTION__") no-repeat center / contain;
+}
+
+/* ---- Inline code & code blocks: terminal green -------------------------- */
+.markdown-rendered code, .cm-inline-code {
+  font-family: var(--geo-mono) !important;
+  border: 1px dotted var(--interactive-accent);
+  padding: 0 4px;
+}
+.markdown-rendered pre, .HyperMD-codeblock {
+  border: 2px inset var(--interactive-accent) !important;
+  border-radius: 0 !important;
+}
+
+/* ---- Tags: garish pills -------------------------------------------------- */
+.tag, a.tag {
+  font-family: var(--geo-face) !important;
+  border: 2px outset var(--tag-color) !important;
+  border-radius: 0 !important;
+  font-weight: 700;
+  padding: 1px 8px !important;
+  text-shadow: none !important;
+}
+
+/* ---- Checkboxes, tables, callouts --------------------------------------- */
+.markdown-rendered table { border: 3px double var(--interactive-accent); }
+.markdown-rendered th {
+  background: var(--interactive-accent) !important;
+  color: var(--text-on-accent) !important;
+  font-family: var(--geo-face);
+  text-transform: uppercase;
+}
+.markdown-rendered td { border: 1px solid var(--background-modifier-border); }
+.callout {
+  border: 3px ridge var(--interactive-accent) !important;
+  border-radius: 0 !important;
+  background: var(--geo-panel-bg) !important;
+}
+
+/* ---- Buttons & inputs: chunky Win98 bevels ------------------------------ */
+button, .clickable-icon, input[type="text"], input[type="search"], .prompt-input {
+  font-family: var(--geo-face) !important;
+  border-radius: 0 !important;
+}
+button:not(.clickable-icon) {
+  border: 2px outset var(--interactive-accent) !important;
+  background: var(--interactive-normal) !important;
+  color: var(--text-normal) !important;
+  font-weight: 700;
+}
+button:not(.clickable-icon):active { border-style: inset !important; }
+
+/* ---- Active tab: gets a "NEW!" flag ------------------------------------- */
+.workspace-tab-header.is-active {
+  position: relative;
+  border-bottom: 3px solid var(--interactive-accent);
+}
+.workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  font-weight: 700;
+  color: var(--text-accent) !important;
+}
+
+/* ---- Vault name in sidebar → spinning globe ----------------------------- */
+.workspace-drawer-vault-name, .nav-header::before {
+  content: "";
+}
+.nav-files-container::before {
+  content: "";
+  display: block;
+  height: 36px; margin: 6px auto;
+  background: url("__GLOBE__") no-repeat center / contain;
+}
+
+/* ---- Status bar: hit counter + flame ------------------------------------ */
+.status-bar {
+  border-top: 2px ridge var(--interactive-accent) !important;
+  background: var(--geo-panel-bg) !important;
+}
+.status-bar::before {
+  content: "";
+  display: inline-block; width: 60px; height: 18px; vertical-align: middle;
+  margin: 0 6px;
+  background: url("__COUNTER__") no-repeat left center / contain;
+}
+.status-bar::after {
+  content: "";
+  display: inline-block; width: 16px; height: 18px; vertical-align: middle;
+  margin-left: auto;
+  background: url("__FLAME__") no-repeat center / contain;
+}
+
+/* ---- Scrollbars ---------------------------------------------------------- */
+::-webkit-scrollbar { width: 14px; height: 14px; }
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-bg);
+  border: 2px outset var(--scrollbar-active-thumb-bg);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-active-thumb-bg); }
+
+/* ---- Selection ----------------------------------------------------------- */
+::selection { background: var(--text-highlight-bg); color: #000; }
+
+/* ---- Ribbon (left icon bar): star bullets ------------------------------- */
+.side-dock-ribbon-action:hover { background: var(--interactive-accent) !important; }
+
+/* ---- Bullet points: sparkle star ---------------------------------------- */
+.markdown-rendered ul > li::marker { content: "\2726 "; color: var(--interactive-accent); }
