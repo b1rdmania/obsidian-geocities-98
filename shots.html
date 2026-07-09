@@ -1,0 +1,48 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="theme.css">
+<style>
+  html,body{margin:0}
+  .workspace{position:relative;display:flex;height:800px;font-size:15px;overflow:hidden}
+  .side-dock-ribbon{width:44px;background:var(--geo-panel-bg);border-right:2px ridge var(--interactive-accent)}
+  .side-dock-ribbon-action{height:34px;margin:5px;border:1px solid var(--interactive-accent)}
+  .workspace-split.mod-left-split{width:210px;padding:6px}
+  .nav-files-container{height:100%;color:var(--text-normal)}
+  .nav-file{padding:3px 8px}
+  .nav-file.is-active{background:var(--background-modifier-hover);border:1px dotted var(--interactive-accent)}
+  .main{flex:1;display:flex;flex-direction:column;min-width:0}
+  .workspace-tab-header-container{display:flex;gap:2px;padding:4px 6px}
+  .workspace-tab-header{padding:4px 16px 4px 14px;color:var(--text-muted);background:var(--geo-panel-bg)}
+  .markdown-preview-view{flex:1;overflow:hidden;padding:22px 40px;color:var(--text-normal);line-height:1.6}
+  .status-bar{display:flex;align-items:center;padding:2px 8px;color:var(--text-muted);font-size:12px}
+  table{border-collapse:collapse} th,td{padding:4px 10px} pre{padding:10px}
+  .callout{padding:10px 14px;margin:14px 0}
+  .callout-title{display:flex;gap:8px;font-weight:700;margin-bottom:4px}
+</style></head>
+<body class="__MODE__">
+<div class="workspace">
+  <div class="side-dock-ribbon">
+    <div class="side-dock-ribbon-action"></div><div class="side-dock-ribbon-action"></div>
+    <div class="side-dock-ribbon-action"></div>
+  </div>
+  <div class="workspace-split mod-left-split">
+    <div class="nav-files-container">
+      <div class="nav-file is-active">🏠 Home.md</div>
+      <div class="nav-file">👤 About the Webmaster.md</div>
+      <div class="nav-file">🔗 My Favourite Links.md</div>
+      <div class="nav-file">💍 The Webring.md</div>
+      <div class="nav-file">📖 Guestbook.md</div>
+      <div class="nav-file">🚧 Under Construction.md</div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="workspace-tab-header-container">
+      <div class="workspace-tab-header is-active"><span class="workspace-tab-header-inner-title">🏠 Home.md</span></div>
+      <div class="workspace-tab-header"><span class="workspace-tab-header-inner-title">📖 Guestbook.md</span></div>
+    </div>
+    <div class="markdown-preview-view markdown-rendered">
+      __BODY__
+    </div>
+    <div class="status-bar"><span>142 words</span></div>
+  </div>
+</div>
+</body></html>

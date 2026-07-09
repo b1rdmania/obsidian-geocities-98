@@ -1,0 +1,112 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="theme.css">
+<style>
+  html,body{margin:0}
+  .workspace{position:relative;display:flex;height:800px;font-size:14px;overflow:hidden}
+  .side-dock-ribbon{width:42px;background:var(--geo-panel-bg);border-right:2px ridge var(--interactive-accent)}
+  .side-dock-ribbon-action{height:30px;margin:5px;border:1px solid var(--interactive-accent)}
+
+  /* file explorer */
+  .mod-left-split{width:196px;padding:4px 6px;background:var(--geo-panel-bg) !important;border-right:2px ridge var(--interactive-accent)}
+  .nav-files-container{height:100%;color:var(--text-normal)}
+  .nav-file{padding:3px 6px;font-size:13px}
+  .nav-file.is-active{background:var(--background-modifier-hover);border:1px dotted var(--interactive-accent)}
+
+  .center{flex:1;display:flex;flex-direction:column;min-width:0}
+
+  /* tab bar with several tabs */
+  .workspace-tab-header-container{display:flex;gap:2px;padding:4px 6px 0}
+  .workspace-tab-header{padding:4px 14px;color:var(--text-muted);background:var(--geo-panel-bg);font-size:13px;white-space:nowrap}
+
+  .panes{flex:1;display:flex;min-height:0}
+  .pane-md{flex:1.25;min-width:0;border-right:3px ridge var(--interactive-accent)}
+  .markdown-preview-view{height:100%;overflow:hidden;padding:18px 26px;color:var(--text-normal);line-height:1.55}
+  .markdown-preview-view h1{font-size:1.7em}
+  .callout{padding:8px 12px;margin:12px 0}
+  .callout-title{display:flex;gap:8px;font-weight:700;margin-bottom:3px}
+  table{border-collapse:collapse} th,td{padding:3px 9px;font-size:13px}
+
+  /* graph pane */
+  .pane-graph{flex:1;position:relative;
+    background:var(--background-primary);background-attachment:fixed;overflow:hidden}
+  .graph-label{position:absolute;top:8px;left:10px;z-index:5;font-weight:700;
+    color:var(--text-accent);text-shadow:var(--geo-heading-glow);font-size:13px;
+    background:var(--geo-panel-bg);border:2px ridge var(--interactive-accent);padding:2px 8px}
+  .gnode{position:absolute;transform:translate(-50%,-50%);text-align:center;z-index:3}
+  .gdot{width:16px;height:16px;border-radius:50%;margin:0 auto 3px;
+    background:var(--interactive-accent);box-shadow:0 0 10px var(--interactive-accent),0 0 4px #fff}
+  .gnode.center .gdot{width:26px;height:26px;background:var(--text-accent);
+    box-shadow:0 0 16px var(--link-color),0 0 6px #fff}
+  .gnode.cyan .gdot{background:var(--link-color);box-shadow:0 0 10px var(--link-color)}
+  .glabel{font-size:11px;color:var(--text-normal);text-shadow:1px 1px 0 #000}
+  .status-bar{display:flex;align-items:center;padding:2px 8px;color:var(--text-muted);font-size:12px}
+</style></head>
+<body class="theme-dark">
+<div class="workspace">
+  <div class="side-dock-ribbon">
+    <div class="side-dock-ribbon-action"></div><div class="side-dock-ribbon-action"></div>
+    <div class="side-dock-ribbon-action"></div><div class="side-dock-ribbon-action"></div>
+  </div>
+
+  <div class="mod-left-split">
+    <div class="nav-files-container">
+      <div class="nav-file is-active">🏠 Home.md</div>
+      <div class="nav-file">👤 About the Webmaster.md</div>
+      <div class="nav-file">🔗 My Favourite Links.md</div>
+      <div class="nav-file">💍 The Webring.md</div>
+      <div class="nav-file">📖 Guestbook.md</div>
+      <div class="nav-file">🚧 Under Construction.md</div>
+    </div>
+  </div>
+
+  <div class="center">
+    <div class="workspace-tab-header-container">
+      <div class="workspace-tab-header is-active"><span class="workspace-tab-header-inner-title">🏠 Home.md</span></div>
+      <div class="workspace-tab-header"><span class="workspace-tab-header-inner-title">📖 Guestbook.md</span></div>
+      <div class="workspace-tab-header"><span class="workspace-tab-header-inner-title">💍 The Webring.md</span></div>
+      <div class="workspace-tab-header"><span class="workspace-tab-header-inner-title">Graph view</span></div>
+    </div>
+
+    <div class="panes">
+      <div class="pane-md">
+        <div class="markdown-preview-view markdown-rendered">
+          <h1>Welcome To My Vault</h1>
+          <p>You are visitor number <b>000001</b>. Best viewed in Netscape Navigator at 800&times;600. Sign my <a href="#">guestbook</a>!</p>
+          <hr>
+          <h2>What is this place</h2>
+          <p>A vault with <a href="#">links</a>, <code>inline code</code> and #tags like <a class="tag">#underconstruction</a>.</p>
+          <div class="callout" data-callout="warning"><div class="callout-title">⚠ Under construction</div>Not finished since 1997.</div>
+          <ul><li>Animated GIF dividers</li><li>Comic Sans headings</li><li>Starfield backgrounds</li></ul>
+          <pre><code>console.log("hello, 1998");</code></pre>
+        </div>
+      </div>
+
+      <div class="pane-graph">
+        <div class="graph-label">✦ Graph view</div>
+        <!-- edges -->
+        <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:1" viewBox="0 0 400 640" preserveAspectRatio="none">
+          <g stroke="#ff00ff" stroke-width="1.6" opacity=".8">
+            <line x1="200" y1="320" x2="90"  y2="150"/>
+            <line x1="200" y1="320" x2="320" y2="150"/>
+            <line x1="200" y1="320" x2="70"  y2="360"/>
+            <line x1="200" y1="320" x2="330" y2="380"/>
+            <line x1="200" y1="320" x2="120" y2="530"/>
+            <line x1="200" y1="320" x2="300" y2="520"/>
+            <line x1="90"  y1="150" x2="320" y2="150" stroke="#00ffff" opacity=".5"/>
+            <line x1="120" y1="530" x2="300" y2="520" stroke="#00ffff" opacity=".5"/>
+          </g>
+        </svg>
+        <div class="gnode center" style="left:50%;top:50%"><div class="gdot"></div><div class="glabel">🏠 Home</div></div>
+        <div class="gnode"      style="left:22%;top:23%"><div class="gdot"></div><div class="glabel">About</div></div>
+        <div class="gnode cyan" style="left:80%;top:23%"><div class="gdot"></div><div class="glabel">Links</div></div>
+        <div class="gnode cyan" style="left:17%;top:56%"><div class="gdot"></div><div class="glabel">Webring</div></div>
+        <div class="gnode"      style="left:82%;top:59%"><div class="gdot"></div><div class="glabel">Guestbook</div></div>
+        <div class="gnode"      style="left:30%;top:83%"><div class="gdot"></div><div class="glabel">Under Constr.</div></div>
+        <div class="gnode cyan" style="left:75%;top:81%"><div class="gdot"></div><div class="glabel">MIDI Heaven</div></div>
+      </div>
+    </div>
+
+    <div class="status-bar"><span>142 words</span></div>
+  </div>
+</div>
+</body></html>

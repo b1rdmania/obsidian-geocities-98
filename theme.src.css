@@ -144,29 +144,29 @@ body {
 /* ---- Global chrome ------------------------------------------------------- */
 body { font-family: var(--geo-face); }
 
-.markdown-source-view,
-.markdown-preview-view,
-.workspace-leaf-content[data-type="markdown"] .cm-editor,
-.workspace-leaf-content[data-type="markdown"] {
-  background: var(--geo-page-bg) !important;
-  background-attachment: fixed !important;
+body .markdown-source-view,
+body .markdown-preview-view,
+body .workspace-leaf-content[data-type="markdown"] .cm-editor,
+body .workspace-leaf-content[data-type="markdown"] {
+  background: var(--geo-page-bg);
+  background-attachment: fixed;
 }
 .workspace-tabs .workspace-leaf { background: transparent; }
 
 /* Sidebars & panels get the flat panel colour, no starfield (keeps lists legible) */
-.workspace-split.mod-left-split,
-.workspace-split.mod-right-split,
-.nav-files-container,
-.workspace-tab-header-container {
-  background: var(--geo-panel-bg) !important;
+body .workspace-split.mod-left-split,
+body .workspace-split.mod-right-split,
+body .nav-files-container,
+body .workspace-tab-header-container {
+  background: var(--geo-panel-bg);
 }
 
 /* ---- Headings: glowing Comic Sans --------------------------------------- */
-.markdown-preview-view h1, .markdown-preview-view h2, .markdown-preview-view h3,
-.markdown-preview-view h4, .markdown-preview-view h5, .markdown-preview-view h6,
-.cm-header, .HyperMD-header {
-  font-family: var(--geo-face) !important;
-  font-weight: 700 !important;
+body .markdown-preview-view h1, body .markdown-preview-view h2, body .markdown-preview-view h3,
+body .markdown-preview-view h4, body .markdown-preview-view h5, body .markdown-preview-view h6,
+body .cm-header, body .HyperMD-header {
+  font-family: var(--geo-face);
+  font-weight: 700;
   text-shadow: var(--geo-heading-glow);
   letter-spacing: .5px;
 }
@@ -188,39 +188,45 @@ body { font-family: var(--geo-face); }
 }
 
 /* H2: animated rainbow rule underneath */
-.markdown-preview-view h2 {
-  border-bottom: none !important;
+body .markdown-preview-view h2 {
+  border-bottom: none;
   padding-bottom: 10px;
   background: url("__RAINBOW__") repeat-x left bottom / auto 6px;
 }
 
 /* ---- Links: underlined + a little glow ---------------------------------- */
-.markdown-preview-view a, .cm-hmd-internal-link, .cm-link, a.tag, .external-link {
-  text-decoration: underline !important;
+/* NOTE: selectors are prefixed with `body` to win on specificity without
+   `!important` — theme CSS loads after core CSS, so equal specificity wins. */
+body .markdown-preview-view a,
+body .cm-hmd-internal-link, body .cm-link, body a.tag, body .external-link {
+  text-decoration-line: underline;
   text-shadow: var(--geo-glow);
 }
-.markdown-preview-view a:hover { text-decoration: underline wavy !important; }
+body .markdown-preview-view a:hover {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+}
 
 /* ---- Horizontal rule → animated GIF divider ----------------------------- */
-.markdown-preview-view hr,
-.markdown-source-view .cm-hr {
-  border: none !important;
-  height: 24px !important;
-  background: url("__DIVIDER__") repeat-x center / auto 100% !important;
-  box-shadow: none !important;
+body .markdown-preview-view hr,
+body .markdown-source-view .cm-hr {
+  border: none;
+  height: 24px;
+  background: url("__DIVIDER__") repeat-x center / auto 100%;
+  box-shadow: none;
 }
 
 /* ---- Blockquotes → "under construction" box ----------------------------- */
-.markdown-preview-view blockquote,
-.markdown-source-view .cm-quote {
-  border: 3px ridge var(--interactive-accent) !important;
-  border-left-width: 3px !important;
-  background: var(--geo-panel-bg) !important;
-  border-radius: 0 !important;
+body .markdown-preview-view blockquote,
+body .markdown-source-view .cm-quote {
+  border: 3px ridge var(--interactive-accent);
+  border-left-width: 3px;
+  background: var(--geo-panel-bg);
+  border-radius: 0;
   position: relative;
-  padding: 10px 14px 10px 46px !important;
+  padding: 10px 14px 10px 46px;
 }
-.markdown-preview-view blockquote::before {
+body .markdown-preview-view blockquote::before {
   content: "";
   position: absolute; left: 6px; top: 50%; transform: translateY(-50%);
   width: 32px; height: 32px;
@@ -228,62 +234,63 @@ body { font-family: var(--geo-face); }
 }
 
 /* ---- Inline code & code blocks: terminal green -------------------------- */
-.markdown-rendered code, .cm-inline-code {
-  font-family: var(--geo-mono) !important;
+body .markdown-rendered code, body .cm-inline-code {
+  font-family: var(--geo-mono);
   border: 1px dotted var(--interactive-accent);
   padding: 0 4px;
 }
-.markdown-rendered pre, .HyperMD-codeblock {
-  border: 2px inset var(--interactive-accent) !important;
-  border-radius: 0 !important;
+body .markdown-rendered pre, body .HyperMD-codeblock {
+  border: 2px inset var(--interactive-accent);
+  border-radius: 0;
 }
 
 /* ---- Tags: garish pills -------------------------------------------------- */
-.tag, a.tag {
-  font-family: var(--geo-face) !important;
-  border: 2px outset var(--tag-color) !important;
-  border-radius: 0 !important;
+body .tag, body a.tag {
+  font-family: var(--geo-face);
+  border: 2px outset var(--tag-color);
+  border-radius: 0;
   font-weight: 700;
-  padding: 1px 8px !important;
-  text-shadow: none !important;
+  padding: 1px 8px;
+  text-shadow: none;
 }
 
 /* ---- Checkboxes, tables, callouts --------------------------------------- */
-.markdown-rendered table { border: 3px double var(--interactive-accent); }
-.markdown-rendered th {
-  background: var(--interactive-accent) !important;
-  color: var(--text-on-accent) !important;
+body .markdown-rendered table { border: 3px double var(--interactive-accent); }
+body .markdown-rendered th {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
   font-family: var(--geo-face);
   text-transform: uppercase;
 }
-.markdown-rendered td { border: 1px solid var(--background-modifier-border); }
-.callout {
-  border: 3px ridge var(--interactive-accent) !important;
-  border-radius: 0 !important;
-  background: var(--geo-panel-bg) !important;
+body .markdown-rendered td { border: 1px solid var(--background-modifier-border); }
+body .callout {
+  border: 3px ridge var(--interactive-accent);
+  border-radius: 0;
+  background: var(--geo-panel-bg);
 }
 
 /* ---- Buttons & inputs: chunky Win98 bevels ------------------------------ */
-button, .clickable-icon, input[type="text"], input[type="search"], .prompt-input {
-  font-family: var(--geo-face) !important;
-  border-radius: 0 !important;
+body button, body .clickable-icon,
+body input[type="text"], body input[type="search"], body .prompt-input {
+  font-family: var(--geo-face);
+  border-radius: 0;
 }
-button:not(.clickable-icon) {
-  border: 2px outset var(--interactive-accent) !important;
-  background: var(--interactive-normal) !important;
-  color: var(--text-normal) !important;
+body button:not(.clickable-icon) {
+  border: 2px outset var(--interactive-accent);
+  background: var(--interactive-normal);
+  color: var(--text-normal);
   font-weight: 700;
 }
-button:not(.clickable-icon):active { border-style: inset !important; }
+body button:not(.clickable-icon):active { border-style: inset; }
 
 /* ---- Active tab: gets a blinking "NEW!" GIF badge ----------------------- */
 .workspace-tab-header.is-active {
   position: relative;
   border-bottom: 3px solid var(--interactive-accent);
 }
-.workspace-tab-header.is-active .workspace-tab-header-inner-title {
+body .workspace-tab-header.is-active .workspace-tab-header-inner-title {
   font-weight: 700;
-  color: var(--text-accent) !important;
+  color: var(--text-accent);
 }
 .workspace-tab-header.is-active::after {
   content: "";
@@ -302,9 +309,9 @@ button:not(.clickable-icon):active { border-style: inset !important; }
 }
 
 /* ---- Status bar: hit counter + flame ------------------------------------ */
-.status-bar {
-  border-top: 2px ridge var(--interactive-accent) !important;
-  background: var(--geo-panel-bg) !important;
+body .status-bar {
+  border-top: 2px ridge var(--interactive-accent);
+  background: var(--geo-panel-bg);
 }
 .status-bar::before {
   content: "";
@@ -332,7 +339,7 @@ button:not(.clickable-icon):active { border-style: inset !important; }
 ::selection { background: var(--text-highlight-bg); color: #000; }
 
 /* ---- Ribbon (left icon bar): star bullets ------------------------------- */
-.side-dock-ribbon-action:hover { background: var(--interactive-accent) !important; }
+body .side-dock-ribbon-action:hover { background: var(--interactive-accent); }
 
 /* ---- Bullet points: real animated sparkle GIF --------------------------- */
 .markdown-preview-view ul { list-style: none; }
