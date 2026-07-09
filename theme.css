@@ -195,8 +195,8 @@ body .markdown-preview-view h2 {
 }
 
 /* ---- Links: underlined + a little glow ---------------------------------- */
-/* NOTE: selectors are prefixed with `body` to win on specificity without
-   `!important` — theme CSS loads after core CSS, so equal specificity wins. */
+/* NOTE: selectors are prefixed with `body` to win on specificity the clean way
+   — theme CSS loads after core CSS, so equal-or-higher specificity wins. */
 body .markdown-preview-view a,
 body .cm-hmd-internal-link, body .cm-link, body a.tag, body .external-link {
   text-decoration-line: underline;
