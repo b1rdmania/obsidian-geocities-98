@@ -364,8 +364,8 @@ button:not(.clickable-icon):active { border-style: inset !important; }
 .workspace::after {
   content: "";
   position: fixed;
-  right: 10px; bottom: 34px;
-  width: 56px; height: 74px;
+  right: 14px; bottom: 34px;
+  width: 104px; height: 138px;
   background: url("__BABY__") no-repeat center / contain;
   mix-blend-mode: screen;
   pointer-events: none;
