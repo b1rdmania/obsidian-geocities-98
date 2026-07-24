@@ -34,6 +34,12 @@ personal homepage. Light **and** dark. Best viewed in Netscape Navigator at
 - 🌍 **A spinning globe** sits proudly atop your file list.
 - 🔢 **A hit counter and a flame** live in your status bar. You've earned them.
 - 💾 **Garish tag pills**, Win98 bevelled buttons, ✦ sparkle bullet points.
+- 📣 **A real scrolling `[!marquee]` callout.** Type:
+  ```
+  > [!marquee]
+  > Sign my guestbook! Best viewed in Netscape at 800x600!
+  ```
+  and get an honest-to-god CSS ticker banner. No JS. Some things never left 1998.
 
 Every GIF and tile is baked into `theme.css` as a `data:` URI, so the whole thing
 is **one self-contained file** — nothing hotlinks, nothing rots, works offline.

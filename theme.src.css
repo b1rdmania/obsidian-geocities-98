@@ -269,6 +269,35 @@ body .callout {
   background: var(--geo-panel-bg);
 }
 
+/* ---- [!marquee] callout: a real scrolling ticker banner ----------------- */
+/* type `> [!marquee]` then your text — 100% CSS, no JS, self-contained */
+@keyframes geo-marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+body .callout[data-callout="marquee"] {
+  overflow: hidden;
+  padding: 6px 0;
+  border-width: 2px;
+}
+body .callout[data-callout="marquee"] .callout-title {
+  display: none;
+}
+body .callout[data-callout="marquee"] .callout-content {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%;
+  font-family: var(--geo-face);
+  font-weight: 700;
+  color: var(--text-accent);
+  text-shadow: var(--geo-glow);
+  animation: geo-marquee-scroll 10s linear infinite;
+}
+body .callout[data-callout="marquee"] .callout-content p {
+  display: inline;
+  margin: 0;
+}
+
 /* ---- Buttons & inputs: chunky Win98 bevels ------------------------------ */
 body button, body .clickable-icon,
 body input[type="text"], body input[type="search"], body .prompt-input {
