@@ -75,6 +75,7 @@ body {
   --scrollbar-thumb-bg: #ff00ff;
   --scrollbar-active-thumb-bg: #ffff00;
 
+  --geo-page-color: #000022;
   --geo-page-bg: #000022 url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAAD/0lEQVR4nO2dy3XbMBBFQZWSpIgU4QpYghbZpBMv0oFdgYtwEVYtzIIO6Ugg8Z83A7y78MLHxyLnzQ8DUJyc++YUM8/X19c/6KtoyMX723m+Cl/HEX1b3zk3KY+A7vFHwIZMKOgJOHkYAWACEUBakylAUtIYOcMEGTQF6elucyKgA49WYn2XJ4Ceq9dAoTvuAnTg10GW91v1/1nojoPWAD2wDY3l7aN+9DgKEMlq/SMNSrShAFE8/fi+/bzjXJsgrAEVePu4ebWJgQKAGTQF6em5GQFCHKWpQSNAmJNCDRBgWZ7lPzSVuhd50kRJp6Dtxqbpl+TnJiF5kdIRsN5S9RurW1QbXaT/szQUYT3TeXlUCDAy7ILAUAAwbQVosQHSGW0FmH5mjqhSqdgFCU8pWITBiNaARptKEGrdi6gASUNzzWoVbsJ85eJUDmcq3qGXwkR/MttJRW8NKNlmMoTedUCJ9fXstwTRK4CXSMsamiwpFeDI0IYsG4neGjAISiNgHOwJYKjAxsAUBKZaBMAdU/PK+YRqAmD7k1V+ixrYqwFeXl5+u0qzgWy8OSCYGGA1ALURr+0AAIswmE5SkF0oABgJAeAdqmZYA8AwBYGhALE0SqSDpqDl/SZ2ZumcQQXQA1MQGI8A7BolYQoCwxQEhgKACQvAktCUsACqpucClD9UkuSyLMJgWAPAUAAwFAAMBQCzC8BHSiGwCwLTTwpaFpMRfHE2T/Q9Mk0qNlhSuTj0ib4MepqOsAaA6acGGIUCgKkpQB/FXJhqArT+cgHTnHQN1QQo+fqEnroaLyd7KvldkLYnHYzyGQEZg6AS63fv8o8cJeeL+2d9yWHcaKEzz9e75Ly54GcK0nNWcjS4EgZT1AUZHUCqIl+A1fqSGnRZuotS0LLcjA6B9cAaAKbzYZz+rMUIABMbAfpdySiMADCHEcDBciGROcMvQNJwn9nJS+S8yy9A0nA/Y7Imo5kJz2ANAINZBzQtMCYcf4MRAGaPAFuO0w27AI+1lJK4xHFvxq7ipwBeW4+2cfhI0sg9b2eXNSBA0sg9Y2e382loOZv1Yzq3jH11AwIU9qy1XlHU6BC/dgFSTzze/eVqfYWvidrQLkDSUORRLclXM+cRKMLmzguZe/lVIAJsWd/peNwqaf3kF4BLsBKS1k9+AbgES6LEX+sX4buWY4RgKvHXygI8tn1dBlNwOBHvdvVHEcvyjG37bHVu9VNQifXLV0zyzzrckZpyrQ7jTh6QshUBVgXoBu2jiO6hAGAMC9DHCoM1AExRBPD8aDmMADCGa0ALUleC5c8oMgJ2NutLjlIYATtJ+5e1ejAK8B/xvv91EHIiht73CZMVRgAYCgCGAoD5C8enZskxxMLgAAAAAElFTkSuQmCC");
   --geo-panel-bg: #00003a;
   --geo-glow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
@@ -135,6 +136,7 @@ body {
   --scrollbar-thumb-bg: #ff0066;
   --scrollbar-active-thumb-bg: #0000ff;
 
+  --geo-page-color: #ffffcc;
   --geo-page-bg: #ffffcc url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAbElEQVR4nGP8//8MAw4wi+FsGoMxLlkiASMeC6gCmGhq+vCzIP0spVGKCUYjedQCuluQfpZUCwZNMiU7D9LfB2dnUdeCQRMHw8gC9OREKGeMxgF1LKCkKh2Ng1ELcAHi0xUTSarhYKYxsXUnAP3EJlsNW3u5AAAAAElFTkSuQmCC");
   --geo-panel-bg: #ccffff;
   --geo-glow: none;
@@ -144,12 +146,31 @@ body {
 /* ---- Global chrome ------------------------------------------------------- */
 body { font-family: var(--geo-face); }
 
-body .markdown-source-view,
-body .markdown-preview-view,
-body .workspace-leaf-content[data-type="markdown"] .cm-editor,
+/* The starfield lives in a pseudo-element, not on the note surface.
+   Banner plugins (Pixel Banner and friends) inject their image inside the
+   note with a negative z-index so the text sits on top. Any background
+   painted on an ancestor covers it. Isolating the leaf and dropping the
+   starfield to z-index -2 leaves the -1 layer free for the banner. */
 body .workspace-leaf-content[data-type="markdown"] {
+  position: relative;
+  isolation: isolate;
+  background: var(--geo-page-color);
+}
+
+body .workspace-leaf-content[data-type="markdown"]::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
   background: var(--geo-page-bg);
   background-attachment: fixed;
+}
+
+body .markdown-source-view,
+body .markdown-preview-view,
+body .workspace-leaf-content[data-type="markdown"] .cm-editor {
+  background: transparent;
 }
 .workspace-tabs .workspace-leaf { background: transparent; }
 

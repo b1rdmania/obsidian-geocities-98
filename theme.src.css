@@ -75,6 +75,7 @@ body {
   --scrollbar-thumb-bg: #ff00ff;
   --scrollbar-active-thumb-bg: #ffff00;
 
+  --geo-page-color: #000022;
   --geo-page-bg: #000022 url("__STARFIELD__");
   --geo-panel-bg: #00003a;
   --geo-glow: 0 0 4px #00ffff, 0 0 8px #ff00ff;
@@ -135,6 +136,7 @@ body {
   --scrollbar-thumb-bg: #ff0066;
   --scrollbar-active-thumb-bg: #0000ff;
 
+  --geo-page-color: #ffffcc;
   --geo-page-bg: #ffffcc url("__CONFETTI__");
   --geo-panel-bg: #ccffff;
   --geo-glow: none;
@@ -144,12 +146,31 @@ body {
 /* ---- Global chrome ------------------------------------------------------- */
 body { font-family: var(--geo-face); }
 
-body .markdown-source-view,
-body .markdown-preview-view,
-body .workspace-leaf-content[data-type="markdown"] .cm-editor,
+/* The starfield lives in a pseudo-element, not on the note surface.
+   Banner plugins (Pixel Banner and friends) inject their image inside the
+   note with a negative z-index so the text sits on top. Any background
+   painted on an ancestor covers it. Isolating the leaf and dropping the
+   starfield to z-index -2 leaves the -1 layer free for the banner. */
 body .workspace-leaf-content[data-type="markdown"] {
+  position: relative;
+  isolation: isolate;
+  background: var(--geo-page-color);
+}
+
+body .workspace-leaf-content[data-type="markdown"]::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
   background: var(--geo-page-bg);
   background-attachment: fixed;
+}
+
+body .markdown-source-view,
+body .markdown-preview-view,
+body .workspace-leaf-content[data-type="markdown"] .cm-editor {
+  background: transparent;
 }
 .workspace-tabs .workspace-leaf { background: transparent; }
 
